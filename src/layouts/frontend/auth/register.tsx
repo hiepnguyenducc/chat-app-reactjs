@@ -34,6 +34,8 @@ setRegisterInput({...registerInput,[e.target.name]:value});
     axios.get('/sanctum/csrf-cookie').then(res=>{
       axios.post(`api/register`,data).then(res=>{
         if(res.data.status ===200){
+          localStorage.setItem('auth_token',res.data.token);
+          localStorage.setItem('auth_name',res.data.username);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -103,7 +105,7 @@ setRegisterInput({...registerInput,[e.target.name]:value});
                     <input
                       className="text-gray-500 border-gray-300 focus:ring-0 focus:border-gray-400 text-sm rounded-lg py-2.5 px-4 w-full"
                       type="text" id="email" name="name" onChange={handleInput} value={registerInput.name}
-                      placeholder="Enter Your Email"/>
+                      placeholder="Enter Your Name"/>
                   </div>
                   <div>
                     <label className="font-medium text-sm block mb-2" htmlFor="email">Email</label>
