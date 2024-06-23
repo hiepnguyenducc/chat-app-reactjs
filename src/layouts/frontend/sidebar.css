@@ -2,8 +2,6 @@
   flex: 0;
   border-right: 1px solid #dddddd35;
   flex-direction: column;
-  p{
-    color: red;
-  }
+
 }
 
